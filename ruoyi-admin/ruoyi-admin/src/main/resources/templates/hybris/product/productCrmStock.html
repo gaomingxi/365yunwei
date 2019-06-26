@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: select2-css" />
+    <th:block th:include="include :: header('日日顺库存查询')"/>
+</head>
+<body class="gray-bg">
+
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <form id="formId">
+                <div class="select-list">
+                    <ul>
+                        <li>
+                            产品编码：<input type="text" name="product"/>
+                        </li>
+                        <li>
+                            区域编码：
+                            <select name="deptCode" th:with="type=${@dict.getType('365rrs_area_code')}">
+                                <option selected="selected" value=""></option>
+                                <option th:each="dict : ${type}" th:text="${dict.dictValue} + ' ' + ${dict.dictLabel}" th:value="${dict.dictValue}" ></option>
+                            </select>
+                        </li>
+                        <li>
+                            是否POP：<select name="popFlag">
+                                <option selected="selected" value="">非POP库存</option>
+                                <option value="pop">POP库存</option>
+                            </select>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;查询</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+        </div>
+
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<th:block th:include="include :: select2-js" />
+<script th:inline="javascript">
+    var prefix = ctx + "hybris/product";
+    $(function () {
+        var options = {
+            url: prefix + "/listProductCrmStock",
+            modalName: "日日顺库存查询",
+            showExport: true,
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'invcode',
+                    title: '产品编码',
+                    visible: true
+                },
+                {
+                    field: 'invstd',
+                    title: '产品名称'
+                },
+                {
+                    field: 'qty',
+                    title: '库存'
+                },
+                {
+                    field: 'age',
+                    title: '库龄'
+                },
+                {
+                    field: 'whcode',
+                    title: '库位编码'
+                },
+                {
+                    field: 'sitename',
+                    title: '库位名称'
+                },
+                {
+                    field: 'sortname',
+                    title: '品牌'
+                }
+            ]
+        };
+        $.table.init(options);
+    });
+</script>
+</body>
+</html>

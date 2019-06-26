@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.hybris.mapper.UserGroupMapper">
+    
+    <resultMap id="UserGroupEntityResult" type="com.ruoyi.hybris.domain.UserGroupEntity">
+        <result property="customerCodeLabel"    column="customer_code_label"/>
+        <result property="customerCode"    column="customer_code"/>
+        <result property="customerRole"    column="customer_role"/>
+        <result property="customerRoleLabel"    column="customer_role_label"/>
+        <result property="tradeName"    column="trade_name"/>
+        <result property="tradeCode"    column="trade_code"/>
+        <result property="salesOrganization"    column="sales_organization"/>
+        <result property="channel"    column="channel"/>
+        <result property="subChannel"    column="sub_channel"/>
+        <result property="regionCode"    column="region_code"/>
+        <result property="uniqueId"    column="unique_id"/>
+    </resultMap>
+    
+    <select id="listUserGroupsByCode" parameterType="String" resultMap="UserGroupEntityResult">
+        select lp.p_locname          customer_code_label,
+               u.uniqueid            customer_code,
+               us.uniqueid           unique_id,
+               e.code                customer_role,
+               o.trade_dept_name     trade_name,
+               o.trade_dept_code     trade_code,
+               u.p_regioncode        region_code,
+               u.p_salesorganization sales_organization,
+               u.p_channel           channel,
+               u.P_SUBCHANNEL        sub_channel
+          from hybris.usergroups u
+          left join hybris.usergroupslp lp
+            on u.pk = lp.itempk
+          left join hybris.users us
+            on us.p_defaultb2bunit = u.pk
+          left join hybris.enumerationvalues e
+            on us.p_role = e.pk
+          left join hybris.T_WL_ORGANIZATION o
+            on u.p_gongmaocode = o.trade_dept_code
+         where u.uniqueid = #{ code, jdbcType=VARCHAR }
+          order by customer_role
+    </select>
+
+</mapper>

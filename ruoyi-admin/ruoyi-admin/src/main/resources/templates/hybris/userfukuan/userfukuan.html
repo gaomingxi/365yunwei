@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('付款方列表')"/>
+</head>
+<body class="gray-bg">
+
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <form id="formId">
+                <div class="select-list">
+                    <ul>
+                        <li>
+                            售达方编码：<input type="text" name="code"/>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+        </div>
+
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+    var prefix = ctx + "hybris/userfukuan";
+    $(function () {
+        var options = {
+            url: prefix + "/list",
+            modalName: "付款方列表",
+            showExport: true,
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'shoudaCode',
+                    title: '售达方编码',
+                    visible: true
+                },
+                {
+                    field: 'fukuanCode',
+                    title: '付款方编码',
+                    sortable: true
+                },
+                {
+                    field: 'fukuanName',
+                    title: '付款方名称',
+                    // sortable: true
+                },
+                {
+                    field: 'fukuanType',
+                    title: '付款方类型',
+                    sortable: true
+                },
+                {
+                    field: 'fukuanTypeLabel',
+                    title: '付款方类型',
+                    // sortable: true
+                },
+                {
+                    field: 'isDelete',
+                    title: '是否冻结',
+                    sortable: true
+                },
+                {
+                    field: 'isDeleteLabel',
+                    title: '是否冻结',
+                    // sortable: true
+                }
+            ]
+        };
+        $.table.init(options);
+    });
+</script>
+</body>
+</html>

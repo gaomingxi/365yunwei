@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.hybris.mapper.UserFukuanMapper">
+    
+    <resultMap id="EntityResult" type="com.ruoyi.hybris.domain.UserFukuanEntity">
+        <result property="shoudaCode"    column="shouda_code"/>
+        <result property="fukuanCode"    column="fukuan_code"/>
+        <result property="fukuanName"    column="fukuan_name"/>
+        <result property="fukuanType"    column="fukuan_type"/>
+        <result property="isDelete"    column="is_delete"/>
+    </resultMap>
+
+    <select id="list" parameterType="String" resultMap="EntityResult">
+        select f.p_shoudacode shouda_code,
+               f.p_fukuancode fukuan_code,
+               f.p_fukuanname fukuan_name,
+               f.p_kongtiaotype fukuan_type,
+               f.p_isdelete is_delete
+          from hybris.rrsfukuancrm f
+         where f.p_shoudacode = #{ code, jdbcType=VARCHAR }
+         order by f.p_fukuancode
+    </select>
+
+</mapper>

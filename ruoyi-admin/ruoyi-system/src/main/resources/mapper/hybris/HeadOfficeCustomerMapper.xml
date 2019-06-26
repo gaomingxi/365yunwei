@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.hybris.mapper.HeadOfficeCustomerMapper">
+
+    <resultMap id="EntityResult" type="com.ruoyi.hybris.domain.HeadOfficeCustomerEntity">
+        <result property="customerCode" column="customer_code"/>
+        <result property="customerName" column="customer_name"/>
+        <result property="saleCode" column="sale_code"/>
+        <result property="tradeCode" column="trade_code"/>
+        <result property="customerType" column="customer_type"/>
+    </resultMap>
+
+    <select id="list" parameterType="String" resultMap="EntityResult">
+        select t.cusno customer_code,
+        lp.p_locname customer_name,
+        t.salesorganization sale_code,
+        t.gongmao trade_code,
+        t.type customer_type
+        from (
+            select to_char(cusno) cusno, salesorganization, gongmao, type from hybris.sdrrscustomer
+            WHERE 1=1
+            <if test="code!=null and code != ''">
+                and TO_CHAR(cusno) = #{ code, jdbcType=VARCHAR }
+            </if>
+        ) t
+        left join hybris.usergroups u on u.uniqueid = t.cusno
+        left join hybris.usergroupslp lp on lp.itempk = u.pk
+        order by t.type, t.cusno
+    </select>
+
+</mapper>

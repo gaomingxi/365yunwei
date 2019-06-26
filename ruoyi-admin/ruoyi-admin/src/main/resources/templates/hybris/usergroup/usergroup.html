@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('客户基础列表')"/>
+</head>
+<body class="gray-bg">
+
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <form id="formId">
+                <div class="select-list">
+                    <ul>
+                        <li>
+                            售达方编码：<input type="text" name="customerCode"/>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+        </div>
+
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+    var prefix = ctx + "hybris/usergroup";
+    $(function () {
+        var options = {
+            url: prefix + "/list",
+            modalName: "客户基础",
+            showExport: true,
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'customerCode',
+                    title: '售达方编码',
+                    visible: true
+                },
+                {
+                    field: 'customerCodeLabel',
+                    title: '售达方名称',
+                    sortable: true
+                },
+                {
+                    field: 'uniqueId',
+                    title: '账号',
+                    sortable: true
+                },
+                {
+                    field: 'customerRole',
+                    title: '角色',
+                    sortable: true
+                },
+                {
+                    field: 'customerRoleLabel',
+                    title: '角色名称',
+                    sortable: true
+                },
+                {
+                    field: 'tradeCode',
+                    title: '中心编码',
+                    sortable: true
+                },
+                {
+                    field: 'tradeName',
+                    title: '中心名称',
+                    sortable: true
+                },
+                {
+                    field: 'salesOrganization',
+                    title: '销售值组织',
+                    sortable: true
+                },
+                {
+                    field: 'regionCode',
+                    title: '区域编码',
+                    sortable: true
+                },
+                {
+                    field: 'channel',
+                    title: '大渠道',
+                    sortable: true
+                },
+                {
+                    field: 'subChannel',
+                    title: '小渠道',
+                    sortable: true
+                }
+            ]
+        };
+        $.table.init(options);
+    });
+</script>
+</body>
+</html>

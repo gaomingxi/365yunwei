@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('修改客户基础')" />
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-usergroups-edit" th:object="${usergroups}">
+            <input id="hjmpts" name="hjmpts" th:field="*{hjmpts}"  type="hidden">
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="typepkstring" name="typepkstring" th:field="*{typepkstring}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pk" name="pk" th:field="*{pk}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="createdts" name="createdts" th:field="*{createdts}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="modifiedts" name="modifiedts" th:field="*{modifiedts}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="ownerpkstring" name="ownerpkstring" th:field="*{ownerpkstring}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="aclts" name="aclts" th:field="*{aclts}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="propts" name="propts" th:field="*{propts}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pIsfreezed" name="pIsfreezed" th:field="*{pIsfreezed}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pBackendsystem" name="pBackendsystem" th:field="*{pBackendsystem}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pCn" name="pCn" th:field="*{pCn}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pContactaddress" name="pContactaddress" th:field="*{pContactaddress}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pIlnid" name="pIlnid" th:field="*{pIlnid}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pReportingorganization" name="pReportingorganization" th:field="*{pReportingorganization}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pAccountmanager" name="pAccountmanager" th:field="*{pAccountmanager}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pDn" name="pDn" th:field="*{pDn}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pChannel" name="pChannel" th:field="*{pChannel}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pVatid" name="pVatid" th:field="*{pVatid}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pLicensenum" name="pLicensenum" th:field="*{pLicensenum}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pShippingaddress" name="pShippingaddress" th:field="*{pShippingaddress}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pUserpricegroup" name="pUserpricegroup" th:field="*{pUserpricegroup}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pDunsid" name="pDunsid" th:field="*{pDunsid}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pBizgroup" name="pBizgroup" th:field="*{pBizgroup}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pAreaid" name="pAreaid" th:field="*{pAreaid}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pMedias" name="pMedias" th:field="*{pMedias}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pSubchannel" name="pSubchannel" th:field="*{pSubchannel}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pSalesorganization" name="pSalesorganization" th:field="*{pSalesorganization}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pSupplier" name="pSupplier" th:field="*{pSupplier}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pBillingaddress" name="pBillingaddress" th:field="*{pBillingaddress}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pProfilepicture" name="pProfilepicture" th:field="*{pProfilepicture}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pId" name="pId" th:field="*{pId}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pIs4net" name="pIs4net" th:field="*{pIs4net}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pManufacturer" name="pManufacturer" th:field="*{pManufacturer}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="uniqueid" name="uniqueid" th:field="*{uniqueid}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pClienttype" name="pClienttype" th:field="*{pClienttype}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pQuotelimit" name="pQuotelimit" th:field="*{pQuotelimit}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pRebatephone" name="pRebatephone" th:field="*{pRebatephone}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pActivatestatus" name="pActivatestatus" th:field="*{pActivatestatus}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pAuthorities" name="pAuthorities" th:field="*{pAuthorities}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pCompanyecode" name="pCompanyecode" th:field="*{pCompanyecode}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pUnloadingaddress" name="pUnloadingaddress" th:field="*{pUnloadingaddress}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pDefaultassignee" name="pDefaultassignee" th:field="*{pDefaultassignee}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pGongmaocode" name="pGongmaocode" th:field="*{pGongmaocode}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pUserdiscountgroup" name="pUserdiscountgroup" th:field="*{pUserdiscountgroup}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pContact" name="pContact" th:field="*{pContact}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pRebatename" name="pRebatename" th:field="*{pRebatename}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pCountry" name="pCountry" th:field="*{pCountry}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pCylb" name="pCylb" th:field="*{pCylb}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pBuyerspecificid" name="pBuyerspecificid" th:field="*{pBuyerspecificid}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pUsertaxgroup" name="pUsertaxgroup" th:field="*{pUsertaxgroup}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pReadablelanguages" name="pReadablelanguages" th:field="*{pReadablelanguages}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pLineofbuisness" name="pLineofbuisness" th:field="*{pLineofbuisness}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pSupplierspecificid" name="pSupplierspecificid" th:field="*{pSupplierspecificid}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pVenture" name="pVenture" th:field="*{pVenture}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pBuyer" name="pBuyer" th:field="*{pBuyer}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pEmaildistributionlist" name="pEmaildistributionlist" th:field="*{pEmaildistributionlist}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pStore" name="pStore" th:field="*{pStore}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pTaxpayernumber" name="pTaxpayernumber" th:field="*{pTaxpayernumber}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="name" name="name" th:field="*{name}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pCreditlimit" name="pCreditlimit" th:field="*{pCreditlimit}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pActive" name="pActive" th:field="*{pActive}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pApprovalprocesscode" name="pApprovalprocesscode" th:field="*{pApprovalprocesscode}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pWriteablelanguages" name="pWriteablelanguages" th:field="*{pWriteablelanguages}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pUnit" name="pUnit" th:field="*{pUnit}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pLdapsearchbase" name="pLdapsearchbase" th:field="*{pLdapsearchbase}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pHmclogindisabled" name="pHmclogindisabled" th:field="*{pHmclogindisabled}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pTaxpayerdescription" name="pTaxpayerdescription" th:field="*{pTaxpayerdescription}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pRegioncode" name="pRegioncode" th:field="*{pRegioncode}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pResponsiblecompany" name="pResponsiblecompany" th:field="*{pResponsiblecompany}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pCarrier" name="pCarrier" th:field="*{pCarrier}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pSuperbusiness" name="pSuperbusiness" th:field="*{pSuperbusiness}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="description" name="description" th:field="*{description}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pReceipttype" name="pReceipttype" th:field="*{pReceipttype}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pShoudatype" name="pShoudatype" th:field="*{pShoudatype}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pAgreestatus" name="pAgreestatus" th:field="*{pAgreestatus}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">特殊类型，Y租赁（售达方下送达方付款方在各工贸中存在）：</label>
+				<div class="col-sm-8">
+					<input id="pSpectype" name="pSpectype" th:field="*{pSpectype}" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">${column.columnComment}：</label>
+				<div class="col-sm-8">
+					<input id="pMarketarea" name="pMarketarea" th:field="*{pMarketarea}" class="form-control" type="text">
+				</div>
+			</div>
+		</form>
+    </div>
+    <div th:include="include::footer"></div>
+    <script type="text/javascript">
+		var prefix = ctx + "hybris/usergroups";
+		$("#form-usergroups-edit").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			},
+			focusCleanup: true
+		});
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	            $.operate.save(prefix + "/edit", $('#form-usergroups-edit').serialize());
+	        }
+	    }
+	</script>
+</body>
+</html>

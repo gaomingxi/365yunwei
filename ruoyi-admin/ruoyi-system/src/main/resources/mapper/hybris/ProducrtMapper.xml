@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.hybris.mapper.ProductMapper">
+    
+    <resultMap id="EntityResult" type="com.ruoyi.hybris.domain.ProductEntity">
+        <result property="productCode"    column="product_code"/>
+        <result property="productName"    column="product_name"/>
+        <result property="productGroup"    column="product_group"/>
+        <result property="productBrand"    column="product_brand"/>
+        <result property="productUnit"    column="product_unit"/>
+        <result property="compProducts"    column="comp_products"/>
+        <result property="highEnd"    column="high_end"/>
+        <result property="jike"    column="jike"/>
+    </resultMap>
+
+    <select id="findProductByCode" parameterType="String" resultMap="EntityResult">
+        select distinct t.material_code product_code,
+                        t.material_descrition product_name,
+                        t.department product_group,
+                        t.pro_band product_brand,
+                        t.primary_uom product_unit,
+                        replace(P_COMBYPRODUCTS, ':1', '') comp_products,
+                        p.p_gaoduan high_end,
+                        p.p_isjike jike
+          from hybris.etl_mdm_goodsbase t
+          left join hybris.products p on p.code = t.material_code
+         WHERE t.material_code = #{ code, jdbcType=VARCHAR }
+    </select>
+
+    <select id="listProductByLike" parameterType="com.ruoyi.hybris.domain.ProductEntity" resultMap="EntityResult">
+        select t.material_code       product_code,
+               t.material_descrition product_name,
+               t.department          product_group,
+               t.pro_band            product_brand,
+               t.primary_uom         product_unit
+          from hybris.etl_mdm_goodsbase t
+         <where>
+             <if test="productCode != null and productCode != ''">
+                 and material_code LIKE '%'||#{productCode}||'%'
+             </if>
+             <if test="productName != null and productName != ''">
+                 and material_descrition LIKE '%'||#{productName}||'%'
+             </if>
+         </where>
+    </select>
+
+    <select id="compSelectTaoji" parameterType="String" resultMap="EntityResult">
+        select ps.code product_code
+          from hybris.products ps
+         where ps.p_combyproducts LIKE '%'||#{code, jdbcType=VARCHAR}||'%'
+    </select>
+
+    <select id="listProductByComp" parameterType="String" resultMap="EntityResult">
+        select distinct t.material_code product_code,
+                        t.material_descrition product_name,
+                        t.department product_group,
+                        t.pro_band product_brand,
+                        t.primary_uom product_unit,
+                        replace(P_COMBYPRODUCTS, ':1', '') comp_products,
+                        p.p_gaoduan high_end,
+                        p.p_isjike jike
+          from hybris.etl_mdm_goodsbase t
+          left join hybris.products p on p.code = t.material_code
+         WHERE t.material_code in
+            <foreach collection="productList" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+    </select>
+
+</mapper>

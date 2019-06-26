@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('子件查询套机信息')"/>
+</head>
+<body class="gray-bg">
+
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <form id="formId">
+                <div class="select-list">
+                    <ul>
+                        <li>
+                            子件编码：<input type="text" name="code"/>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+        </div>
+
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+    var prefix = ctx + "hybris/product";
+    $(function () {
+        var options = {
+            url: prefix + "/listProductComp",
+            modalName: "子件查询套机信息",
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'productCode',
+                    title: '产品编码',
+                    visible: true
+                },
+                {
+                    field: 'productName',
+                    title: '产品名称',
+                },
+                {
+                    field: 'productGroup',
+                    title: '产品组',
+                },
+                {
+                    field: 'productBrand',
+                    title: '品牌',
+                },
+                {
+                    field: 'productBrandLabel',
+                    title: '品牌名称',
+                },
+                {
+                    field: 'highEnd',
+                    title: '高端标识',
+                },
+                {
+                    field: 'compProducts',
+                    title: '子件',
+                },
+                {
+                    field: 'jikeLabel',
+                    title: '是否机壳',
+                },
+                {
+                    field: 'productUnitLabel',
+                    title: '单位',
+                }
+            ]
+        };
+        $.table.init(options);
+    });
+</script>
+</body>
+</html>

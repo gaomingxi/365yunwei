@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.hybris.mapper.UserStreetMapper">
+    
+    <resultMap id="EntityResult" type="com.ruoyi.hybris.domain.UserStreetEntity">
+        <result property="streetCode"    column="STREET_CODE"/>
+        <result property="streetLabel"    column="STREET_LABEL"/>
+        <result property="district"    column="DISTRICT"/>
+        <result property="warehouseCode"    column="WAREHOUSE_CODE"/>
+        <result property="flag"    column="FLAG"/>
+        <result property="tradeCode"    column="TRADE_CODE"/>
+        <result property="tradeLabel"    column="TRADE_LABEL"/>
+    </resultMap>
+    
+    <select id="list" parameterType="String" resultMap="EntityResult">
+        SELECT A.P_STREETNAME    STREET_CODE,
+               A.P_STREETNUMBER  STREET_LABEL,
+               A.P_DISTRICT      DISTRICT,
+               B.WAREHOUSE_CODE  WAREHOUSE_CODE,
+               B.FLAG            FLAG,
+               A.P_GONGMAOCODE   TRADE_CODE,
+               O.TRADE_DEPT_NAME TRADE_LABEL
+          FROM HYBRIS.ADDRESSES A
+          LEFT JOIN HYBRIS.T_WL_WAREHOUSE B
+            ON A.P_STREETNAME = B.ADDRESS_CODE
+          LEFT JOIN HYBRIS.T_WL_ORGANIZATION O
+            ON O.TRADE_DEPT_CODE = A.P_GONGMAOCODE
+         WHERE A.OWNERPKSTRING =
+               (SELECT PK FROM HYBRIS.USERGROUPS WHERE UNIQUEID = #{ code, jdbcType=VARCHAR })
+         ORDER BY A.P_STREETNAME
+    </select>
+
+</mapper>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.hybris.mapper.CustomerStoreMapper">
+
+    <resultMap id="EntityResult" type="com.ruoyi.hybris.domain.CustomerStoreEntity">
+        <result property="customerCode" column="CUSTOMER_CODE"/>
+        <result property="streetCode" column="STREET_CODE"/>
+        <result property="streetCodeLabel" column="CUSTOMER_CODE_LABEL"/>
+        <result property="customerCategory" column="CUSTOMER_CATEGORY"/>
+        <result property="industryClass" column="INDUSTRY_CLASS"/>
+        <result property="storeFlag" column="STREETCODE_FLAG"/>
+        <result property="deleteFlag" column="DELETE_FLAG"/>
+        <result property="lastUpdateTime" column="I_CREATE_TIME"/>
+    </resultMap>
+
+    <select id="list" parameterType="String" resultMap="EntityResult">
+        SELECT TS.CUSTOMER_NUMBER CUSTOMER_CODE,
+               TS.SUB_CUSTOMER_NAME1 CUSTOMER_CODE_LABEL,
+               TS.CUSTOMER_NUMBER_SH STREET_CODE,
+               T.CUSTOMER_CATEGORY CUSTOMER_CATEGORY,
+               T.T.INDUSTRY_CLASS INDUSTRY_CLASS,
+               T.CUST_FLAG_MD STREETCODE_FLAG,
+               T.DELETE_FLAG DELETE_FLAG,
+               TO_CHAR(T.I_CREATE_TIME, 'YYYY-MM-DD HH24:MI:SS') I_CREATE_TIME
+          FROM I_CRM_CUST_SP2SH2IMB_SX TS
+          LEFT JOIN I_CRM_CUST_BASE_ALL T
+            ON TS.CUSTOMER_NUMBER_SH = T.CUSTOMER_NUMBER
+         WHERE 1 = 1
+           AND TS.CUSTOMER_NUMBER = #{ code, jdbcType=VARCHAR }
+    </select>
+
+</mapper>

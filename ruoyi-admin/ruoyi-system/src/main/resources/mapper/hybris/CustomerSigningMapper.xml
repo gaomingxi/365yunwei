@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.hybris.mapper.CustomerSigningMapper">
+
+    <resultMap id="EntityResult" type="com.ruoyi.hybris.domain.CustomerSigningEntity">
+        <result property="customerCode" column="customer_code"/>
+        <result property="brand" column="brand"/>
+        <result property="productGroup" column="product_group"/>
+        <result property="productGroupLabel" column="product_group_label"/>
+    </resultMap>
+
+    <select id="list" parameterType="String" resultMap="EntityResult">
+        select distinct t.custcode customer_code,
+        t.groupcode product_group,
+        t.ipinpai   brand,
+        t.groupname product_group_label
+        from hybris.t_wl_contractrate t
+        where t.plan > 0
+        and t.custcode = #{ code, jdbcType=VARCHAR }
+        and (case
+        when t.imonth &lt; 10 then
+        t.iyear || '0' || t.imonth
+        else
+        t.iyear || t.imonth
+        end) = to_char(sysdate, 'yyyyMM')
+        order by t.groupcode
+    </select>
+
+</mapper>

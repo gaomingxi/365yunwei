@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('送达方列表')"/>
+</head>
+<body class="gray-bg">
+
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <form id="formId">
+                <div class="select-list">
+                    <ul>
+                        <li>
+                            售达方编码：<input type="text" name="code"/>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+        </div>
+
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+    var prefix = ctx + "hybris/userStreet";
+    $(function () {
+        var options = {
+            url: prefix + "/list",
+            modalName: "送达方列表",
+            showExport: true,
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'streetCode',
+                    title: '送达方编码',
+                    visible: true
+                },
+                {
+                    field: 'streetLabel',
+                    title: '送达方名称',
+                    sortable: true
+                },
+                {
+                    field: 'district',
+                    title: '送达方地址',
+                    sortable: true
+                },
+                {
+                    field: 'warehouseCode',
+                    title: '配送中心编码',
+                    sortable: true
+                },
+                {
+                    field: 'flagLabel',
+                    title: '主辅仓标记',
+                    sortable: true
+                },
+                {
+                    field: 'tradeCode',
+                    title: '工贸编码',
+                    sortable: true
+                },
+                {
+                    field: 'tradeLabel',
+                    title: '工贸名称',
+                    sortable: true
+                }
+            ]
+        };
+        $.table.init(options);
+    });
+</script>
+</body>
+</html>
